@@ -32,9 +32,7 @@ node_modules/.bin/sequelize db:seed:all
 ## Getting Started
 
 ```sh
-# clone it
-git clone https://github.com/bbasinsk/capstone-backend.git
-cd capstone-backend
+cd server
 
 # Install dependencies
 npm install
@@ -49,17 +47,17 @@ npm start
 ## Docker Support
 
 ```sh
-cd capstone-backend
+cd server
 
 # Build your docker
-docker build -t bbasinsk/capstone-backend .
-#            ^      ^                     ^
-#          tag      tag name       Dockerfile location
+docker build -t username/backend .
+#                ^         ^     ^
+#              tag   tag name    Dockerfile location
 
 # run your docker
-docker run -p 8080:8080 bbasinsk/capstone-backend
-#                 ^            ^
-#          bind the port    container tag
+docker run -p 8080:8080 username/backend
+#                 ^                ^
+#          bind the port         container tag
 #          to your host
 #          machine port
 ```
