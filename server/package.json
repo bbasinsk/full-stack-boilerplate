@@ -1,0 +1,52 @@
+{
+  "name": "capstone-backend",
+  "version": "0.1.0",
+  "description": "Capstone Project",
+  "main": "dist",
+  "scripts": {
+    "dev": "nodemon -w src --exec \"babel-node src\"",
+    "prebuild": "rm -rf dist/*",
+    "build": "babel src -D -d dist",
+    "prestart": "npm run build",
+    "start": "NODE_ENV=production node ./dist/index.js",
+    "lint": "eslint src",
+    "docs": "apidoc -i ./src -o ./docs && live-server ./docs"
+  },
+  "repository": "bbasinsk/capstone-backend",
+  "author": "Ben Basinski <benbasinski97@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.13.3",
+    "compression": "^1.5.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.7.1",
+    "dotenv": "^6.2.0",
+    "express": "^4.13.3",
+    "express-session": "^1.15.6",
+    "morgan": "^1.8.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "pg": "^7.6.1",
+    "pg-hstore": "^2.3.2",
+    "pretty-error": "^2.1.1",
+    "sequelize": "^4.41.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.5",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.1.5",
+    "@babel/register": "^7.0.0",
+    "apidoc": "^0.17.6",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-prettier": "^2.4.0",
+    "nodemon": "^1.17.0",
+    "prettier": "^1.14.3"
+  }
+}
