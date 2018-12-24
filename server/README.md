@@ -19,6 +19,20 @@
 └── README.md
 ```
 
+## Database Stuff
+
+Run all migrations
+
+```bash
+node_modules/.bin/sequelize db:migrate
+```
+
+Run all seeds
+
+```bash
+node_modules/.bin/sequelize db:seed:all
+```
+
 ## Getting Started
 
 ```sh
