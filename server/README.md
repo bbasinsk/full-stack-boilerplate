@@ -1,8 +1,4 @@
-# SAD Backend
-
-## Status
-
-[![CircleCI](https://circleci.com/gh/bbasinsk/capstone-backend/tree/master.svg?style=svg)](https://circleci.com/gh/bbasinsk/capstone-backend/tree/master)
+# Backend
 
 ## Project Structure
 
