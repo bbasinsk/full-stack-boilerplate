@@ -3,15 +3,21 @@ import authHelpers from '../auth/authHelpers';
 
 const Auth = {
     login: (req, res, next) => {
-        console.log('login:', req.body);
         passport.authenticate('local', (err, user, info) => {
             if (err) {
                 return res.status(500).json({ status: 'error' });
             }
             if (!user) {
-                res.status(404).json({ status: 'User not found' });
+                res.status(404).json({ status: 'error' });
             }
-            if (user) {
+
+            if (user == authHelpers.loginErrors['USER_NOT_FOUND']) {
+                res.status(500).json({ status: authHelpers.loginErrors['USER_NOT_FOUND'] });
+            }
+            else if (user == authHelpers.loginErrors['INCORRECT_PASSWORD']) {
+                res.status(500).json({ status: authHelpers.loginErrors['INCORRECT_PASSWORD'] });
+            }
+            else {
                 req.logIn(user, function (err) {
                     if (err) {
                         res.status(500).json({ status: 'error' });

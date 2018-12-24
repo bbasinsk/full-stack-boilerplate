@@ -25,9 +25,15 @@ function loginRedirect(req, res, next) {
     return next();
 }
 
+const loginErrors = {
+    'USER_NOT_FOUND': 'User not found',
+    'INCORRECT_PASSWORD': 'Incorrect Password'
+};
+
 export default {
     comparePass,
     createUser,
     loginRequired,
-    loginRedirect
+    loginRedirect,
+    loginErrors
 };
