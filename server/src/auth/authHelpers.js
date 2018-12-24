@@ -1,4 +1,4 @@
-import models from '../models/connection';
+import { User } from '../models';
 import bcrypt from 'bcryptjs';
 
 function comparePass(userPassword, databasePassword) {
@@ -9,7 +9,7 @@ function createUser(req) {
     const salt = bcrypt.genSaltSync();
     const hash = bcrypt.hashSync(req.body.password, salt);
 
-    return models.User.create({
+    return User.create({
         username: req.body.username,
         password: hash
     });

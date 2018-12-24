@@ -1,0 +1,124 @@
+{
+  "info": {
+    "name": "PawRequests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+    "version": "v0.0.0"
+  },
+  "item": [
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "Create Post",
+          "request": {
+            "url": "localhost:8080/api/post",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=utf-8"
+              },
+              {
+                "key": "Cookie",
+                "value": "connect.sid=s%3AxtisizIjoR93J347HlqPbtLOQg6dRIUb.tsJOUhQofOU%2BcBgzGkgOlpUD8qqLCSH1wH2OBV2SwSc"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"string\",\n  \"default\": \"{\\\"content\\\":\\\"Hello there!\\\"}\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Posts",
+          "description": "Get all posts",
+          "request": {
+            "url": "localhost:8080/api/posts",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "connect.sid=s%3AxtisizIjoR93J347HlqPbtLOQg6dRIUb.tsJOUhQofOU%2BcBgzGkgOlpUD8qqLCSH1wH2OBV2SwSc"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Profile",
+          "description": "Get the profile of the current logged in user.",
+          "request": {
+            "url": "localhost:8080/api/profile",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "connect.sid=s%3AxtisizIjoR93J347HlqPbtLOQg6dRIUb.tsJOUhQofOU%2BcBgzGkgOlpUD8qqLCSH1wH2OBV2SwSc"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login",
+          "description": "Login ",
+          "request": {
+            "url": "localhost:8080/api/login",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=utf-8"
+              },
+              {
+                "key": "Cookie",
+                "value": "connect.sid=s%3AxtisizIjoR93J347HlqPbtLOQg6dRIUb.tsJOUhQofOU%2BcBgzGkgOlpUD8qqLCSH1wH2OBV2SwSc"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"string\",\n  \"default\": \"{\\\"username\\\":\\\"bbasinsk1\\\",\\\"password\\\":\\\"pass1234\\\"}\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "url": "localhost:8080/api/logout",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "connect.sid=s%3AxtisizIjoR93J347HlqPbtLOQg6dRIUb.tsJOUhQofOU%2BcBgzGkgOlpUD8qqLCSH1wH2OBV2SwSc"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Register",
+          "request": {
+            "url": "localhost:8080/api/register",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=utf-8"
+              },
+              {
+                "key": "Cookie",
+                "value": "connect.sid=s%3AxtisizIjoR93J347HlqPbtLOQg6dRIUb.tsJOUhQofOU%2BcBgzGkgOlpUD8qqLCSH1wH2OBV2SwSc"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"string\",\n  \"default\": \"{\\\"username\\\":\\\"bbasinsk\\\",\\\"password\\\":\\\"pass1234\\\"}\"\n}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -6,7 +6,6 @@ const Auth = {
         console.log('login:', req.body);
         passport.authenticate('local', (err, user, info) => {
             if (err) {
-                console.log(err);
                 return res.status(500).json({ status: 'error' });
             }
             if (!user) {
@@ -17,7 +16,7 @@ const Auth = {
                     if (err) {
                         res.status(500).json({ status: 'error' });
                     }
-                    res.status(200).json({ status: 'success' });
+                    res.status(200).json({ status: 'login success' });
                 });
             }
         })(req, res, next);
@@ -28,18 +27,24 @@ const Auth = {
             .then(response => {
                 passport.authenticate('local', (err, user, info) => {
                     if (user) {
-                        res.status(200).json({ status: 'success' });
+                        req.logIn(user, function (err) {
+                            if (err) {
+                                res.status(500).json({ status: 'error' });
+                            }
+                            res.status(200).json({ status: 'register success' });
+                        });
                     }
                 })(req, res, next);
             })
             .catch((err) => {
+                console.log('Error:', err);
                 res.status(500).json({ status: 'error' });
             });
     },
 
     logout: (req, res) => {
         req.logout();
-        res.status(200).json({ status: 'success' });
+        res.status(200).json({ status: 'logout success' });
     }
 };
 
