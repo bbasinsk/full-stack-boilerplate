@@ -1,13 +1,9 @@
-export default (sequelize, DataTypes) => {
-  const Post = sequelize.define(
-    'Post',
-    {
-      content: DataTypes.TEXT
-    },
-    {}
-  );
-  // eslint-disable-next-line
-  Post.associate = models => {
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  const Post = sequelize.define('Post', {
+    content: DataTypes.TEXT
+  }, {});
+  Post.associate = function (models) {
     // associations can be defined here
   };
   return Post;
