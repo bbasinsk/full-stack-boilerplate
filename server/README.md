@@ -15,18 +15,24 @@
 └── README.md
 ```
 
-## Database Stuff
+## Data
 
-Run all migrations
+Run all migrations (create all tables)
 
 ```bash
 node_modules/.bin/sequelize db:migrate
 ```
 
-Run all seeds
+Run all seeds (fill tables with mock data)
 
 ```bash
 node_modules/.bin/sequelize db:seed:all
+```
+
+Create a new table (also creates model in /src/models/)
+
+```bash
+node_modules/.bin/sequelize model:generate --name Post --attributes content:string
 ```
 
 ## Getting Started
