@@ -35,6 +35,25 @@ Create a new table (also creates model in /src/models/)
 node_modules/.bin/sequelize model:generate --name Post --attributes content:string
 ```
 
+### Model Definition
+
+```js
+module.exports = (sequelize, DataTypes) => {
+  const User = sequelize.define('User', {
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    password: DataTypes.TEXT
+  }, {});
+  User.associate = function (models) {
+    // associations can be defined here
+  };
+  return User;
+};
+```
+
 ## Getting Started
 
 ```sh
