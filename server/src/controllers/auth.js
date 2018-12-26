@@ -48,6 +48,13 @@ const Auth = {
             });
     },
 
+    facebookLogin: (req, res, next) => passport.authenticate('facebook')(req, res, next),
+
+    facebookVerify: (req, res, next) => passport.authenticate('facebook', {
+        failureRedirect: '/api/login',
+        successRedirect: '/api/profile'
+    })(req, res, next),
+
     logout: (req, res) => {
         req.logout();
         res.status(200).json({ status: 'logout success' });

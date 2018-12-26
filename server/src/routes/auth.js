@@ -4,6 +4,8 @@ import authHelpers from '../auth/authHelpers';
 
 const router = new Router();
 
+// LOCAL AUTHENTICATION ===============================================================================================
+
 /**
  * @api {post} /api/register Register
  * @apiName Register
@@ -14,7 +16,7 @@ const router = new Router();
  *
  * @apiSuccess {String} status Status of the request.
  */
-router.post('/register', authHelpers.loginRedirect, (req, res, next) => auth.register(req, res, next));
+router.post('/register', authHelpers.loginRedirect, auth.register);
 
 /**
  * @api {post} /api/login Login
@@ -26,7 +28,24 @@ router.post('/register', authHelpers.loginRedirect, (req, res, next) => auth.reg
  *
  * @apiSuccess {String} status Status of the request.
  */
-router.post('/login', authHelpers.loginRedirect, (req, res, next) => auth.login(req, res, next));
+router.post('/login', authHelpers.loginRedirect, auth.login);
+
+// FACEBOOK AUTHENTICATION ===============================================================================================
+/**
+ * @api {get} /api/login/facebook Facebook Login
+ * @apiName Facebook Login
+ * @apiGroup Auth
+ */
+router.get('/login/facebook', authHelpers.loginRedirect, auth.facebookLogin);
+
+/**
+ * @api {get} /api/login/facebook/callback Facebook Login Verify
+ * @apiName Facebook Login Verify
+ * @apiGroup Auth
+ */
+router.get('/auth/facebook/callback', auth.facebookVerify);
+
+// END SESSION ===============================================================================================
 
 /**
  * @api {get} /api/logout Logout
@@ -35,6 +54,6 @@ router.post('/login', authHelpers.loginRedirect, (req, res, next) => auth.login(
  *
  * @apiSuccess {String} status Status of the request.
  */
-router.get('/logout', authHelpers.loginRequired, (req, res) => auth.logout(req, res));
+router.get('/logout', authHelpers.loginRequired, auth.logout);
 
 export default router;

@@ -1,5 +1,6 @@
 import { User } from '../models';
 import localStrategy from './local';
+import facebookStrategy from './facebook';
 
 export default function (passport) {
     passport.serializeUser((user, done) => {
@@ -12,5 +13,6 @@ export default function (passport) {
             .catch((err) => { done(err, null); });
     });
 
-    passport.use(localStrategy)
+    passport.use(localStrategy);
+    passport.use(facebookStrategy);
 };
