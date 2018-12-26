@@ -1,5 +1,5 @@
-import { User } from '../models';
 import bcrypt from 'bcryptjs';
+import { User } from '../models';
 
 function comparePass(userPassword, databasePassword) {
     return bcrypt.compareSync(userPassword, databasePassword);
@@ -21,13 +21,14 @@ function loginRequired(req, res, next) {
 }
 
 function loginRedirect(req, res, next) {
-    if (req.user) return res.status(401).json({ status: 'You are already logged in' });
+    if (req.user)
+        return res.status(401).json({ status: 'You are already logged in' });
     return next();
 }
 
 const loginErrors = {
-    'USER_NOT_FOUND': 'User not found',
-    'INCORRECT_PASSWORD': 'Incorrect Password'
+    USER_NOT_FOUND: 'User not found',
+    INCORRECT_PASSWORD: 'Incorrect Password'
 };
 
 export default {

@@ -4,6 +4,8 @@ import authHelpers from '../auth/authHelpers';
 
 const router = new Router();
 
-router.get('/profile', authHelpers.loginRequired, (req, res, next) => user.profile(req, res, next));
+router.get('/profile', authHelpers.loginRequired, (req, res, next) =>
+    user.profile(req, res, next)
+);
 
 export default router;

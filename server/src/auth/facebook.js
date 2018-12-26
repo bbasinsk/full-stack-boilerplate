@@ -8,10 +8,12 @@ const options = {
     profileFields: ['id', 'displayName', 'emails', 'photos']
 };
 
-export default new FacebookStrategy(options, (accessToken, refreshToken, profile, done) => {
-    return User.findOrCreate({
-        where: { facebookId: profile.id }
-    })
-        .then(user => done(null, user[0]))
-        .catch(err => done(err));
-});
+export default new FacebookStrategy(
+    options,
+    (accessToken, refreshToken, profile, done) =>
+        User.findOrCreate({
+            where: { facebookId: profile.id }
+        })
+            .then(user => done(null, user[0]))
+            .catch(err => done(err))
+);

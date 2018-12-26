@@ -21,32 +21,34 @@ app.use(morgan('dev'));
 
 // 3rd party middleware
 app.use(
-  cors({
-    exposedHeaders: config.corsHeaders
-  })
+    cors({
+        exposedHeaders: config.corsHeaders
+    })
 );
 
 app.use(cookieParser());
 
 // Use raw json body parser
 app.use(
-  bodyParser.json({
-    limit: config.bodyLimit
-  })
+    bodyParser.json({
+        limit: config.bodyLimit
+    })
 );
 
 initializeDb(db => {
-  // internal middleware
-  app.use(middleware({ config, db }));
+    // internal middleware
+    app.use(middleware({ config, db }));
 
-  // api routes
-  Object.values(routes).forEach(route => {
-    app.use('/api', route);
-  });
+    // api routes
+    Object.values(routes).forEach(route => {
+        app.use('/api', route);
+    });
 
-  app.server.listen(process.env.PORT || config.port, () => {
-    console.log(`Started on http://localhost:${app.server.address().port}/api`);
-  });
+    app.server.listen(process.env.PORT || config.port, () => {
+        console.log(
+            `Started on http://localhost:${app.server.address().port}/api`
+        );
+    });
 });
 
 const pe = new PrettyError();
@@ -54,8 +56,8 @@ pe.skipNodeFiles();
 pe.skipPackage('express');
 
 app.use((err, req, res, next) => {
-  process.stderr.write(pe.render(err));
-  next();
+    process.stderr.write(pe.render(err));
+    next();
 });
 
 export default app;

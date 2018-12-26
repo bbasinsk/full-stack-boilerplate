@@ -1,6 +1,5 @@
-
 const Users = {
-    profile: (req, res, next) => {
+    profile: (req, res) => {
         res.status(200).json({ status: 'success' });
     }
 };
