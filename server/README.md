@@ -15,6 +15,17 @@
 └── README.md
 ```
 
+## Development
+
+I would recommend using [VSCode](https://code.visualstudio.com/) for development.
+
+Recommended Extensions:
+
+- Eslint
+- Prettier
+
+While in `/server/`, use `npm run dev` to start the server.
+
 ## Data
 
 Run all migrations (create all tables)
