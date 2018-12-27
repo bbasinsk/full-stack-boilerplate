@@ -8,13 +8,24 @@ import PrettyError from 'pretty-error';
 import initializeDb from './db';
 import middleware from './middleware';
 import config from './config.json';
+import path from 'path';
 
 // Import routes
 import * as routes from './routes';
 
+// Constants
+const PORT = process.env.PORT || 8080;
+const HOST = '0.0.0.0';
+
+// Get path of client
+const CLIENT_BUILD_PATH = path.join(__dirname, '../../client/dist');
+
 // Initialize express app
 const app = express();
 app.server = http.createServer(app);
+
+// Static files
+app.use(express.static(CLIENT_BUILD_PATH));
 
 // logger
 app.use(morgan('dev'));
@@ -44,11 +55,8 @@ initializeDb(db => {
         app.use('/api', route);
     });
 
-    app.server.listen(process.env.PORT || config.port, () => {
-        console.log(
-            `Started on http://localhost:${app.server.address().port}/api`
-        );
-    });
+    app.server.listen(PORT, HOST);
+    console.log(`Running on http://${HOST}:${PORT}/api`);
 });
 
 const pe = new PrettyError();

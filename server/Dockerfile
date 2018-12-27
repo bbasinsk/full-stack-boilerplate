@@ -1,22 +1,12 @@
-FROM node:8
-
-# Create app directory
-WORKDIR /usr/src/app
-
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY package*.json ./
-
-RUN npm install
-# If you are building your code for production
-# RUN npm install --only=production
-
-# Bundle app source
+# Stage 1 - building
+FROM node:8 as builder
+WORKDIR /src
 COPY . .
-
-# Delete docs folder
-RUN rm -rf docs
+RUN npm i
+RUN npm run build
 
 EXPOSE 8080
-CMD [ "npm", "start" ]
+CMD ["npm", "start"]
+
+# docker build -t sad-server .
+# docker run --env-file=.env -d -p 8080:8080 sad-server

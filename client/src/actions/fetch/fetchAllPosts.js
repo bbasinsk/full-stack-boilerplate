@@ -1,7 +1,8 @@
 import url from '../config';
 
 const loadAllPosts = async () => {
-  const result = await fetch(`${url}/api/posts`);
+  console.log('fetching posts');
+  const result = await fetch(`${url}/posts`);
   return result.json();
 };
 

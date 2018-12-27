@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon -w src --exec \"babel-node src\"",
     "prebuild": "rm -rf dist/*",
-    "build": "babel src -D -d dist",
+    "build": "./node_modules/.bin/babel src -D -d dist",
     "prestart": "npm run build",
     "start": "NODE_ENV=production node ./dist/index.js",
     "lint": "eslint src",

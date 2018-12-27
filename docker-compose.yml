@@ -1,18 +1,25 @@
-version: '3'
+version: '2'
 services:
-  webapp:
-    build:
-      context: ./frontend
-    ports:
-      - "80:80"
-    deploy:
-      restart_policy:
-        condition: on-failure
   server:
     build:
-      context: ./server
+      context: ./server/
+    command: npm run dev
+    volumes:
+      - ./server/:/usr/app
+      - /usr/app/node_modules
     ports:
       - "8080:8080"
-    deploy:
-      restart_policy:
-        condition: on-failure
+    env_file: ./server/.env # TODO - uncomment this to auto-load your .env file!
+    environment:
+      - NODE_ENV=development
+  client:
+    build:
+      context: ./client/
+    command: npm run dev
+    volumes:
+      - ./client/:/usr/app
+      - /usr/app/node_modules
+    depends_on:
+      - server
+    ports:
+      - "1234:1234"
